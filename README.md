@@ -28,7 +28,7 @@ yzhang.markdown-all-in-one
 
 3. Create a new repository on GitHub (then you can clone repo or 4-5 steps)
 4. `git init`
-5. `git remote add origin` `https://github.com/`_`username/reponame`_`.git `
+5. `git remote add origin https://github.com/username/reponame.git`
 6. `npm init`
 7. `npm i -D eslint prettier eslint-config-prettier`
 8. Add to `package.json` file:
