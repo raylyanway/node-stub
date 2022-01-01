@@ -1,4 +1,4 @@
-# initialization
+# Create Node project
 
 1. Set vscode extensions:
 
