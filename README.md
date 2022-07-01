@@ -5,7 +5,7 @@
 ```
 dbaeumer.vscode-eslint
 esbenp.prettier-vscode
-humao.rest-client
+rangav.vscode-thunder-client
 richie5um2.vscode-sort-json
 rohit-gohri.format-code-action
 streetsidesoftware.code-spell-checker
