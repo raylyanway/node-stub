@@ -1,6 +1,14 @@
 # Create Node project
 
-1. Set vscode extensions:
+### Preparation
+
+Install:
+
+- [Code editor](https://code.visualstudio.com/)
+- [Nodejs v16.19.0 LTS version](https://nodejs.org/en/). To get v16.19.0 use [nvm](https://github.com/nvm-sh/nvm)
+- [Git](https://git-scm.com/)
+
+1. Set vscode extensions (just copy/paste all rows below in search bar):
 
 ```
 dbaeumer.vscode-eslint
@@ -10,6 +18,7 @@ richie5um2.vscode-sort-json
 rohit-gohri.format-code-action
 streetsidesoftware.code-spell-checker
 yzhang.markdown-all-in-one
+mhutchie.git-graph
 ```
 
 2. Set vscode settings:
@@ -64,7 +73,42 @@ yzhang.markdown-all-in-one
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
-  }
+  },
+  "plugins": ["simple-import-sort", "import"],
+  "rules": {
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error"
+  },
+  "overrides": [
+    // override "simple-import-sort" config
+    {
+      "files": ["*.js", "*.jsx", "*.ts", "*.tsx"],
+      "rules": {
+        "simple-import-sort/imports": [
+          "error",
+          {
+            "groups": [
+              // Packages `react` related packages come first.
+              ["^react", "^@?\\w"],
+              // Side effect imports.
+              ["^\\u0000"],
+              // Internal packages.
+              ["^(@|components)(/.*|$)"],
+              // Parent imports. Put `..` last.
+              ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+              // Other relative imports. Put same-folder imports and `.` last.
+              ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+              // Style imports.
+              ["^.+\\.?(css)$"]
+            ]
+          }
+        ]
+      }
+    }
+  ]
 }
 ```
 
